@@ -1,0 +1,8 @@
+verilog work "Adder_1b.vf"
+verilog work "Alu_1b.v"
+verilog work "MyRegister4b.v"
+verilog work "Load_Gen.v"
+verilog work "Alu_4b.v"
+verilog work "TopModule.v"
+verilog work "TopModule_sim.v"
+verilog work "D:/ISE/14.7/ISE_DS/ISE//verilog/src/glbl.v"

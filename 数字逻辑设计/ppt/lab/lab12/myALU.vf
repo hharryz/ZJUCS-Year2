@@ -1,0 +1,65 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.7
+//  \   \         Application : sch2hdl
+//  /   /         Filename : myALU.vf
+// /___/   /\     Timestamp : 12/17/2022 08:45:50
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family kintex7 -verilog G:/ise/lab12/Register/myALU.vf -w G:/ise/lab12/Register/myALU.sch
+//Design Name: myALU
+//Device: kintex7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module myALU(A, 
+             B, 
+             S, 
+             C, 
+             Co);
+
+    input [3:0] A;
+    input [3:0] B;
+    input [1:0] S;
+   output [3:0] C;
+   output Co;
+   
+   wire XLXN_7;
+   wire [3:0] XLXN_8;
+   wire [3:0] XLXN_9;
+   wire [3:0] XLXN_10;
+   wire XLXN_11;
+   
+   myOr2b4  XLXI_1 (.A(A[3:0]), 
+                   .B(B[3:0]), 
+                   .C(XLXN_9[3:0]));
+   myAnd2b4  XLXI_2 (.A(A[3:0]), 
+                    .B(B[3:0]), 
+                    .C(XLXN_8[3:0]));
+   Mux4to1b4  XLXI_4 (.I0(XLXN_10[3:0]), 
+                     .I1(XLXN_10[3:0]), 
+                     .I2(XLXN_8[3:0]), 
+                     .I3(XLXN_9[3:0]), 
+                     .s(S[1:0]), 
+                     .O(C[3:0]));
+   Alu_4b  XLXI_5 (.A(A[3:0]), 
+                  .B(B[3:0]), 
+                  .Ctrl(S[0]), 
+                  .Co(XLXN_7), 
+                  .S(XLXN_10[3:0]));
+   Mux4to1  XLXI_6 (.I0(XLXN_7), 
+                   .I1(XLXN_7), 
+                   .I2(XLXN_11), 
+                   .I3(XLXN_11), 
+                   .s(S[1:0]), 
+                   .O(Co));
+   GND  XLXI_9 (.G(XLXN_11));
+endmodule

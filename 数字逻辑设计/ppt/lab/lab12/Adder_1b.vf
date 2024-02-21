@@ -1,0 +1,59 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.7
+//  \   \         Application : sch2hdl
+//  /   /         Filename : Adder_1b.vf
+// /___/   /\     Timestamp : 12/16/2022 20:02:20
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family kintex7 -verilog G:/ise/lab12/Register/Adder_1b.vf -w G:/ise/lab12/Register/Adder_1b.sch
+//Design Name: Adder_1b
+//Device: kintex7
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module Adder_1b(A, 
+                B, 
+                C, 
+                Co, 
+                S);
+
+    input A;
+    input B;
+    input C;
+   output Co;
+   output S;
+   
+   wire XLXN_7;
+   wire XLXN_8;
+   wire XLXN_9;
+   wire XLXN_12;
+   
+   XOR2  XLXI_1 (.I0(B), 
+                .I1(A), 
+                .O(XLXN_12));
+   XOR2  XLXI_2 (.I0(C), 
+                .I1(XLXN_12), 
+                .O(S));
+   AND2  XLXI_3 (.I0(B), 
+                .I1(A), 
+                .O(XLXN_7));
+   AND2  XLXI_4 (.I0(C), 
+                .I1(B), 
+                .O(XLXN_8));
+   AND2  XLXI_5 (.I0(C), 
+                .I1(A), 
+                .O(XLXN_9));
+   OR3  XLXI_6 (.I0(XLXN_9), 
+               .I1(XLXN_8), 
+               .I2(XLXN_7), 
+               .O(Co));
+endmodule
